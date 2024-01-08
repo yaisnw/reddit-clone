@@ -1,0 +1,21 @@
+.grid {
+    display: grid;
+    grid-template-columns: 5% 5%;
+    justify-content: center;
+    column-gap: 10px;
+}
+.filter:hover {
+    cursor: pointer;
+}
+.filter {
+    display: grid;
+    
+    padding: 15px 0;
+    background-color: #E3241C;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.grid img {
+    width: 30px;
+    height: 30px;
+}

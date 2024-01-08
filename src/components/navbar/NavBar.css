@@ -1,0 +1,8 @@
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.search {
+    padding: 5px 15px
+}
