@@ -41,28 +41,28 @@ function UserPost({ post, onToggleExpansion }) {
                 </video>
             )}
             {!expanded && !video && isImage && (
-                <img src={url_overridden_by_dest} alt="" style={{ width: "100%", height: "auto" }} />
+                <img src={url_overridden_by_dest} alt="" style={{ width: "300px", height: "auto" }} />
             )}
             {!expanded && !video && !isImage && galleryImage && (
-                <img src={galleryImage} alt="" style={{ width: "100%", height: "auto" }} />
+                <img src={galleryImage} alt="" style={{ width: "300px", height: "auto" }} />
             )}
             {!expanded && !video && !isImage && !galleryImage && thumbnail && (
-                <img src={thumbnail} alt="" />
+                <img src={thumbnail} alt="" style={{ width: "300px", height: "auto" }} />
             )}
 
             {expanded && video && (
-                <video width="500px" height="300px" controls>
+                <video width="100%" height="auto" controls>
                     <source src={video} type="video/mp4" />
                 </video>
             )}
             {expanded && !video && isImage && (
-                <img src={url_overridden_by_dest} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />
+                <img src={url_overridden_by_dest} alt="" style={{ width: "100%", height: "auto" }} />
             )}
             {expanded && !video && !isImage && galleryImage && (
-                <img src={galleryImage} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />
+                <img src={galleryImage} alt="" style={{ width: "100%", height: "auto" }} />
             )}
             {expanded && !video && !isImage && !galleryImage && thumbnail && (
-                <img src={thumbnail} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />
+                <img src={thumbnail} alt="" style={{ width: "100%", height: "auto" }} />
             )}
 
             {expanded && ups > 0 && <Expanded ups={ups} />}
