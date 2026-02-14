@@ -26,7 +26,7 @@ function NavBar() {
   
   return (
     <div className='flex'>
-        <h1>RAGHHH</h1>
+        <h1>Reddit</h1>
         <form onSubmit={handleSubmit} >
             <input type="Search" onChange={handleInputChange} className='search' ></input>
             <button className='search'>Search</button>

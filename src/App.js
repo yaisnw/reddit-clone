@@ -1,9 +1,7 @@
-import React from 'react';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
 import Filter from './components/filter/Filter';
 import UserPostList from "./components/userpostlist/UserPostList"
-import { useSelector } from 'react-redux';
 
 
 function App() {
