@@ -22,18 +22,12 @@ function UserPost({ post, key, onToggleExpansion }) {
                 <p>Posted by {author}</p>
             </section>
             {selftext.length > 0 ? <p className='caption'>{selftext.length >= 100 ? selftext.slice(0, 60) + "..." : selftext}</p> : <p className='caption'>{title.length >= 100 ? title.slice(0, 60) + "..." : title}</p>}
-            {!expanded && thumbnail && <img src={thumbnail} alt="" />}
-            {video && !expanded && <video width="300px" height="200px" controls><source src={video} type="video/mp4" /></video>}
+            {!expanded && !video && thumbnail && <img src={thumbnail} alt="" />}
+            {!expanded && video && <video width="300px" height="200px" controls><source src={video} type="video/mp4" /></video>}
             {expanded && video && <video width="500px" height="300px" controls><source src={video} type="video/mp4" /></video>}
-            {expanded && !video && thumbnail && <img src={thumbnail} alt="" style={{ width: "100%", height: "auto" }} />}
-            {expanded && (
-                <Expanded ups={ups} />
-            )}
-
+            {expanded && !video && thumbnail && <img src={thumbnail} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />}
+            {expanded && ups > 0 && <Expanded ups={ups} />}
         </div>
-
-
-
     )
 }
 
