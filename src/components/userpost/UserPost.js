@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import avatar from "./avatar.png"
 import Expanded from './Expanded';
 
-function UserPost({ post, key, onToggleExpansion }) {
+function UserPost({ post, onToggleExpansion }) {
     const { subreddit_name_prefixed, thumbnail, selftext, author, title, ups, url_overridden_by_dest } = post.data;
     const profilePictureObject = post?.data?.author_flair_richtext?.find(item => item.e === 'emoji');
     const profilePicture = profilePictureObject ? profilePictureObject.u : null;
@@ -11,6 +11,11 @@ function UserPost({ post, key, onToggleExpansion }) {
     const postId = post.data.id;
     const expanded = useSelector(state => state.userposts.expandedPosts[postId]);
     const isImage = url_overridden_by_dest?.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+    const isGallery = post.data?.is_gallery;
+    const media_metadata = post.data?.media_metadata;
+    const galleryImage = isGallery && media_metadata
+        ? Object.values(media_metadata)[0]?.s?.u?.replace(/&amp;/g, '&')
+        : null;
 
     return (
         <div className={expanded ? "userPostExpanded" : "userPost"} onClick={() => onToggleExpansion(postId)}>
@@ -38,7 +43,10 @@ function UserPost({ post, key, onToggleExpansion }) {
             {!expanded && !video && isImage && (
                 <img src={url_overridden_by_dest} alt="" style={{ width: "100%", height: "auto" }} />
             )}
-            {!expanded && !video && !isImage && thumbnail && (
+            {!expanded && !video && !isImage && galleryImage && (
+                <img src={galleryImage} alt="" style={{ width: "100%", height: "auto" }} />
+            )}
+            {!expanded && !video && !isImage && !galleryImage && thumbnail && (
                 <img src={thumbnail} alt="" />
             )}
 
@@ -50,7 +58,10 @@ function UserPost({ post, key, onToggleExpansion }) {
             {expanded && !video && isImage && (
                 <img src={url_overridden_by_dest} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />
             )}
-            {expanded && !video && !isImage && thumbnail && (
+            {expanded && !video && !isImage && galleryImage && (
+                <img src={galleryImage} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />
+            )}
+            {expanded && !video && !isImage && !galleryImage && thumbnail && (
                 <img src={thumbnail} alt="" style={{ width: "300px", height: "200px", objectFit: "contain" }} />
             )}
 
