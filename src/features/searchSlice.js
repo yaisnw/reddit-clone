@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchResults = createAsyncThunk("search/fetchResults", async (query) => {
-    const response = await fetch(`https://www.reddit.com/search.json?q=${query}`)
+    const response = await fetch(`https://www.reddit.com/search.json?q=${query}&raw_json=1`, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
     const json = await response.json()
     return json
 })
