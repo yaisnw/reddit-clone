@@ -16,7 +16,7 @@ function UserPost({ post, onToggleExpansion }) {
     const galleryImage = isGallery && media_metadata
         ? Object.values(media_metadata)[0]?.s?.u?.replace(/&amp;/g, '&')
         : null;
-
+    console.log('postId:', postId, 'expanded:', expanded)
     return (
         <div className={expanded ? "userPostExpanded" : "userPost"} onClick={() => onToggleExpansion(postId)}>
             <section className='sub2'>
@@ -31,8 +31,8 @@ function UserPost({ post, onToggleExpansion }) {
             </section>
 
             {selftext.length > 0
-                ? <p className='caption'>{selftext.length >= 100 ? selftext.slice(0, 60) + "..." : selftext}</p>
-                : <p className='caption'>{title.length >= 100 ? title.slice(0, 60) + "..." : title}</p>
+                ? <p className='caption'>{!expanded && selftext.length >= 100 ? selftext.slice(0, 60) + "..." : selftext}</p>
+                : <p className='caption'>{!expanded && title.length >= 100 ? title.slice(0, 60) + "..." : title}</p>
             }
 
             {!expanded && video && (
