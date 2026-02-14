@@ -3,7 +3,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const fetchInitialSub = createAsyncThunk("userposts/fetchInitialSub", async (filter) => {
-    const response = await fetch(`https://corsproxy.io/?https://www.reddit.com/r/Ultrakill/${filter}.json`);
+    const response = await fetch(`https://www.reddit.com/r/Ultrakill/${filter}.json?raw_json=1`, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
     const json = await response.json()
     return json
 })
