@@ -16,7 +16,7 @@ function UserPost({ post, onToggleExpansion }) {
     const galleryImage = isGallery && media_metadata
         ? Object.values(media_metadata)[0]?.s?.u?.replace(/&amp;/g, '&')
         : null;
-    console.log('postId:', postId, 'expanded:', expanded)
+
     return (
         <div className={expanded ? "userPostExpanded" : "userPost"} onClick={() => onToggleExpansion(postId)}>
             <section className='sub2'>
