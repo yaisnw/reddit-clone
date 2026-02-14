@@ -30,7 +30,7 @@ function UserPost({ post, onToggleExpansion }) {
                 <p>Posted by {author}</p>
             </section>
 
-            {selftext.length > 0
+            {selftext?.length > 0
                 ? <p className='caption'>{!expanded && selftext.length >= 100 ? selftext.slice(0, 60) + "..." : selftext}</p>
                 : <p className='caption'>{!expanded && title.length >= 100 ? title.slice(0, 60) + "..." : title}</p>
             }

@@ -1,12 +1,10 @@
-import React from 'react'
 import upvote from "./upvote.svg"
 
 function expanded({ups}) {
   return (
-    <div style={{display: "flex", justifyContent: "center", columnGap: "50px", marginTop: "80px"}}>
-        <img width="50px" height="50px" src={upvote} alt='upvote'/>
+    <div className="expandedInfo">
+        <img width="30px" height="30px" src={upvote} alt="upvotes"/>
         <p>upvotes: {ups}</p>
-        
     </div>
   )
 }
