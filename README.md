@@ -1,6 +1,6 @@
 # Reddit Clone
 
-> A Reddit client for browsing and searching posts — built in January 2024 as part of my React/Redux learning.
+> A Reddit client for browsing and searching posts — originally built in January 2024, recently revisited and improved.
 
 🔗 **[Live Demo](https://yaisnw.github.io/reddit-clone)**
 
@@ -11,8 +11,19 @@
 - 📰 **Browse posts** from r/Ultrakill on load
 - 🔍 **Search** Reddit for any topic
 - 🔼 **Filter** posts by New or Top
-- 🖼️ **Media support** — images, galleries, and videos
-- 🖱️ **Expandable posts** — click to expand full content and upvote count
+- 🖼️ **Media support** — images, galleries, and videos render correctly without overlap
+- 🖱️ **Expandable posts** — click to expand full resolution images, larger videos, and upvote count
+- 🗂️ **Gallery support** — Reddit gallery posts load full quality images via `media_metadata`
+
+---
+
+## Recent Improvements
+
+Coming back to this project in 2026, I fixed several rendering issues:
+
+- **Video + thumbnail conflict** — posts with videos were rendering both the thumbnail and video simultaneously
+- **Gallery images** — expanded gallery posts were showing the low-res thumbnail instead of the full resolution image from `media_metadata`
+- **Image sizing** — unexpanded posts now show a consistent base size, expanded posts go full width
 
 ---
 
@@ -57,4 +68,4 @@ npm run deploy
 
 ## Notes
 
-Reddit's API requires requests from a browser to use a CORS proxy in production. The app uses `corsproxy.io` to handle this in the deployed version.
+Reddit's public JSON API is used directly with the `raw_json=1` parameter to handle response formatting correctly in the browser.
